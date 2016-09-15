@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # class method authenticate
   def self.authenticate(username, password)
     user = User.find_by(username: username)
 
@@ -29,5 +30,10 @@ class User < ActiveRecord::Base
     else
       return nil
     end
+  end
+
+  # instance method authenticate
+  def authenticate(password)
+    self.password == password
   end
 end
